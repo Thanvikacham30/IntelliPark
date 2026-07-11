@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='login.css') }}">
+</head>
+
+<body>
+
+<nav>
+<a href="/">Login</a> |
+<a href="/register">Register</a> |
+<a href="/booking">Booking</a> |
+<a href="/slots">Parking Slots</a> |
+<a href="/payment">Payment</a>
+</nav>
+
+<div class="login-container">
+
+<h2>Login</h2>
+
+<form onsubmit="return loginUser()">
+
+<input type="text"
+       id="username"
+       placeholder="Username"
+       required>
+
+<br>
+
+<input type="password"
+       id="password"
+       placeholder="Password"
+       required>
+
+<br>
+
+<input type="submit"
+       value="Login">
+
+</form>
+
+</div>
+
+<script>
+
+function loginUser(){
+
+let username =
+document.getElementById("username").value;
+
+let password =
+document.getElementById("password").value;
+
+if(username==="admin" &&
+   password==="password123"){
+
+window.location.href="/booking";
+
+}
+else{
+
+alert("Invalid Username or Password");
+
+}
+
+return false;
+
+}
+
+</script>
+
+</body>
+</html>

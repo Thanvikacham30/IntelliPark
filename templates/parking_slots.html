@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spot Availability</title>
+    <link rel="stylesheet" type="text/css" href="parking_slots.css">
+
+</head>
+
+<body>
+    <nav>
+
+    <a href="login.html">
+    Login
+    </a>
+
+    |
+
+    <a href="register.html">
+    Register
+    </a>
+
+    |
+
+    <a href="booking_vehicle.html">
+    Booking
+    </a>
+
+    |
+
+    <a href="parking_slots.html">
+    Parking Slots
+    </a>
+
+    |
+
+    <a href="payment.html">
+    Payment
+    </a>
+
+    </nav>
+    <div class="container">
+        <h1>Parking Spot Availability</h1>
+
+        <div id="parking-spots"></div>
+    </div>
+
+    <script>
+
+    const spots = [
+
+    {id:"A",status:"Available"},
+    {id:"B",status:"Occupied"},
+    {id:"C",status:"Available"},
+    {id:"D",status:"Occupied"}
+
+    ];
+
+    const container =
+    document.getElementById("parking-spots");
+
+    spots.forEach(spot=>{
+
+    container.innerHTML += `
+
+    <div class="spot">
+
+    <p>Spot ${spot.id}</p>
+
+    <span class="${spot.status.toLowerCase()}"
+
+    onclick="
+    if('${spot.status}'==='Available')
+    window.location.href='/payment'
+    ">
+
+    ${spot.status}
+
+    </span>
+
+    </div>
+
+    `;
+
+    });
+
+    </script>
+
+    <footer>
+    <hr>
+    <p>© 2025 IntelliPark</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Booking</title>
+    <!-- Link your CSS file here -->
+    <link rel="stylesheet" type="text/css" href="booking_vehicle.css">
+   
+</head>
+<body>
+    <nav>
+
+    <a href="login.html">
+    Login
+    </a>
+
+    |
+
+    <a href="register.html">
+    Register
+    </a>
+
+    |
+
+    <a href="booking_vehicle.html">
+    Booking
+    </a>
+
+    |
+
+    <a href="parking_slots.html">
+    Parking Slots
+    </a>
+
+    |
+
+    <a href="payment.html">
+    Payment
+    </a>
+
+    </nav>
+    <div class="container">
+        <h1>Vehicle Booking</h1>
+        <div id="booking-form">
+            <form id="booking-details-form" onsubmit="return bookVehicle()">
+                <label for="vehicle-number">Vehicle Number:</label>
+                <input type="text" id="vehicle-number" name="vehicle-number" required><br>
+
+                <label for="user-phone">Mobile Number:</label>
+                <input type="text" id="user-phone" name="user-phone" required><br>
+
+                <label for="entry-date-time">Entry Date and Time:</label>
+                <input type="datetime-local" id="entry-date-time" name="entry-date-time" required><br>
+
+                <label for="exit-date-time">Exit Date and Time:</label>
+                <input type="datetime-local" id="exit-date-time" name="exit-date-time" required><br>
+
+                <input type="submit" value="Book Vehicle">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function bookVehicle() {
+            // Collect booking details
+            const vehicleNumber = document.getElementById("vehicle-number").value;
+            if(
+            vehicleNumber.length < 5
+            ){
+
+            alert(
+            "Enter valid vehicle number"
+            );
+
+            return false;
+            }
+            const userPhone = document.getElementById("user-phone").value;
+            let phonePattern =
+            /^[0-9]{10}$/;
+
+            if(
+            !phonePattern.test(
+            userPhone
+            )
+            ){
+
+            alert(
+            "Enter valid mobile number"
+            );
+
+            return false;
+            }
+            const entryDateTime = document.getElementById("entry-date-time").value;
+            const exitDateTime = document.getElementById("exit-date-time").value;
+
+            // You can perform any necessary actions with the booking details here,
+            // such as sending them to a server for processing.
+
+            // For this example, let's display the booking details in an alert.
+            const bookingDetails = `
+                Vehicle Number: ${vehicleNumber}
+                Mobile Number: ${userPhone}
+                Entry Date and Time: ${entryDateTime}
+                Exit Date and Time: ${exitDateTime}
+            `;
+
+            alert("Booking Successful!\n\n" + bookingDetails);
+
+            // Redirect to the next page (slots.html)
+            window.location.href="/slots";
+
+            // Prevent form submission
+            return false;
+        }
+    </script>
+
+    <footer>
+
+    <hr>
+
+    <p>
+
+    © 2025 IntelliPark
+
+    </p>
+
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='register.css') }}">
+
+</head>
+
+<body>
+
+<nav>
+<a href="/">Login</a> |
+<a href="/register">Register</a> |
+<a href="/booking">Booking</a> |
+<a href="/slots">Parking Slots</a> |
+<a href="/payment">Payment</a>
+</nav>
+
+<div class="registration-container">
+
+<h2>Registration</h2>
+
+<form onsubmit="return registerUser()">
+
+<input type="text"
+name="username"
+placeholder="Username"
+required>
+
+<br>
+
+<input type="tel"
+name="mobile"
+placeholder="Mobile Number"
+required>
+
+<br>
+
+<input type="email"
+name="email"
+placeholder="Email Address"
+required>
+
+<br>
+
+<input type="password"
+name="password"
+placeholder="Password"
+required>
+
+<br>
+
+<input type="submit"
+value="Register">
+
+</form>
+
+</div>
+
+<script>
+
+function registerUser(){
+
+alert("Registration Successful");
+
+window.location.href="/";
+
+return false;
+
+}
+
+</script>
+
+</body>
+</html>

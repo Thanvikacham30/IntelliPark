@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking App Payment</title>
+    <link rel="stylesheet" type="text/css" href="payment.css">
+
+</head>
+<body>
+    <nav>
+
+    <a href="login.html">
+    Login
+    </a>
+
+    |
+
+    <a href="register.html">
+    Register
+    </a>
+
+    |
+
+    <a href="booking_vehicle.html">
+    Booking
+    </a>
+
+    |
+
+    <a href="parking_slots.html">
+    Parking Slots
+    </a>
+
+    |
+
+    <a href="payment.html">
+    Payment
+    </a>
+
+    </nav>
+    <div class="container">
+        <h1>Parking App Payment</h1>
+        <div id="payment-form">
+            <form id="payment-details-form" onsubmit="return processPayment()">
+                <label for="payment-mode">Select Payment Mode:</label>
+                <select id="payment-mode" name="payment-mode" required>
+                    <option value="card">Credit/Debit Card</option>
+                    <option value="online">Online Payment</option>
+                </select><br>
+
+                <div id="card-payment-details">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" required><br>
+
+                    <label for="card-expiry">Card Expiry Date:</label>
+                    <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY" required><br>
+
+                    <label for="card-cvv">CVV:</label>
+                    <input type="text" id="card-cvv" name="card-cvv" required><br>
+                </div>
+
+                <div id="online-payment-details" style="display: none;">
+                    <p>Select Online Payment Method:</p>
+                    <input type="radio" id="phonepe" name="online-method" value="phonepe">
+                    <label for="phonepe"><a href="https://phonepe.com/">PhonePe</a></label><br>
+
+                    <input type="radio" id="gpay" name="online-method" value="gpay">
+                    <label for="gpay"><a href="https://pay.google.com/">Google Pay</a></label><br>
+
+                    <input type="radio" id="paytm" name="online-method" value="paytm">
+                    <label for="paytm"><a href="https://paytm.com/">Paytm</a></label><br>
+
+                    <label for="upi-id">UPI ID:</label>
+                    <input type="text" id="upi-id" name="upi-id"><br>
+                </div>
+
+                <div id="payment-success" style="display: none;">
+                    <p>Payment Successful! Thank you for using our parking service.</p>
+                </div>
+
+                <input type="submit" value="Pay Now">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const paymentModeSelect = document.getElementById("payment-mode");
+        const cardPaymentDetails = document.getElementById("card-payment-details");
+        const onlinePaymentDetails = document.getElementById("online-payment-details");
+        const paymentSuccess = document.getElementById("payment-success");
+
+        paymentModeSelect.addEventListener("change", function () {
+            const selectedPaymentMode = paymentModeSelect.value;
+            if (selectedPaymentMode === "card") {
+                cardPaymentDetails.style.display = "block";
+                onlinePaymentDetails.style.display = "none";
+            } else {
+                cardPaymentDetails.style.display = "none";
+                onlinePaymentDetails.style.display = "block";
+            }
+        });
+
+        function processPayment() {
+            // Simulate a payment process (you should replace this with a real payment gateway)
+            const selectedPaymentMode = paymentModeSelect.value;
+            if (selectedPaymentMode === "card") {
+                const cardNumber = document.getElementById("card-number").value;
+                if(
+                cardNumber.length!==16
+                ){
+
+                alert(
+                "Invalid Card Number"
+                );
+
+                return false;
+                }
+                const cardExpiry = document.getElementById("card-expiry").value;
+                const cardCvv = document.getElementById("card-cvv").value;
+                if(
+                cardCvv.length!==3
+                ){
+
+                alert(
+                "Invalid CVV"
+                );
+
+                return false;
+                }
+
+                // Validate card details (simplified for demonstration)
+                if (!cardNumber || !cardExpiry || !cardCvv) {
+                    alert("Please fill in all card details.");
+                    return false; // Prevent form submission
+                }
+            } else {
+                const upiId = document.getElementById("upi-id").value;
+                let upiRegex =
+                /^[a-zA-Z0-9._-]+@[a-zA-Z]+$/;
+
+                if(
+                !upiRegex.test(
+                upiId
+                )
+                ){
+
+                alert(
+                "Invalid UPI ID"
+                );
+
+                return false;
+                }
+
+                // Validate UPI ID (simplified for demonstration)
+                if (!upiId) {
+                    alert("Please provide your UPI ID.");
+                    return false; // Prevent form submission
+                }
+            }
+
+            // Display the payment success message
+            paymentSuccess.style.display = "block";
+
+            // Prevent form submission
+            return false;
+        }
+    </script>
+
+    <footer>
+
+    <hr>
+
+    <p>
+
+    © 2025 IntelliPark
+
+    </p>
+
+    </footer>
+</body>
+</html>
