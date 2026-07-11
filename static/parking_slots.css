@@ -1,0 +1,51 @@
+/* Reset some default styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    text-align: center;
+    background-color: #f2f2f2;
+    background-image: url("1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the container */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the heading */
+h1 {
+    color: #333;
+}
+
+/* Style the parking spot information */
+.spot {
+    margin-bottom: 10px;
+}
+
+.spot p {
+    margin: 0;
+}
+
+/* Style the available spot */
+.available {
+    color: green;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Style the occupied spot */
+.occupied {
+    color: red;
+}
